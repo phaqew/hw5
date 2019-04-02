@@ -90,19 +90,15 @@ test2|低通D0=20|![](test2_f.bmp)|![](test2.bmp)
 
 将cos函数展开成幂级数，保留二阶项（鉴于$ 2\pi\frac uN $取值在$ [-\pi,\pi] $之间，高频能量比较小，这样的近似还算合理），得：
 
-$$ =2(1-1+\frac{(2{\pi}\frac uN)^2}2)+2(1-1+\frac{(2{\pi}\frac vN)^2}2) $$
+![](f7.gif)
 
-$$ =4\pi^2(\frac{u^2}{N^2}+\frac{v^2}{N^2}) = \frac {4\pi^2}{N^2}d^2 $$
+![](f8.gif)
 
 对于带对角线项的拉普拉斯模板，同理：
 
-$$ 8-e^{j2{\pi}\frac uN}-e^{j2{\pi}\frac vN}-e^{-j2{\pi}\frac uN}-e^{-j2{\pi}\frac uN}-e^{j2{\pi}\frac {u+v}N}-e^{j2{\pi}\frac {u-v}N}-e^{-j2{\pi}\frac {u+v}N}-e^{-j2{\pi}\frac {u-v}N} $$
+![](f9.gif)
 
-$$ =2(1-\cos(2{\pi}\frac uN))+2(1-\cos(2{\pi}\frac vN))+2(1-\cos(2{\pi}\frac {u+v}N))+2(1-\cos(2{\pi}\frac {u-v}N)) $$
-
-$$ =2(1-1+\frac{(2{\pi}\frac uN)^2}2)+2(1-1+\frac{(2{\pi}\frac vN)^2}2) $$
-
-$$ =\frac {4\pi^2}{N^2}(u^2+v^2+(u+v)^2+(u-v)^2) = =\frac {12\pi^2}{N^2}d^2 $$
+![](fa.gif)
 
 * 下面是高通滤波的结果，由于算出的值有正有负（零频分量/直流偏置被去除），这里给每个像素灰度值统一加上了128：（代码见[p2.cpp](p2.cpp)）
 
@@ -160,7 +156,7 @@ test3|![](test3.bmp)
 理想D0=25|![](test3_midhp_25.bmp)
 1阶巴D0=25|![](test3_mbwhp_25_1.bmp)
 2阶巴D0=25|![](test3_mbwhp_25_2.bmp)
-3阶巴D0=25|[](test3_mbwhp_25_3.bmp)
+3阶巴D0=25|![](test3_mbwhp_25_3.bmp)
 高斯D0=25|![](test3_mgshp_25.bmp)
 4向拉|![](test3_mlphp.bmp)
 8向拉|![](test3_mldhp.bmp)
@@ -175,7 +171,9 @@ test4|![](test4.bmp)
 理想D0=25|![](test4_midhp_25.bmp)
 1阶巴D0=25|![](test4_mbwhp_25_1.bmp)
 2阶巴D0=25|![](test4_mbwhp_25_2.bmp)
-3阶巴D0=25|[](test4_mbwhp_25_3.bmp)
+3阶巴D0=25|![](test4_mbwhp_25_3.bmp)
 高斯D0=25|![](test4_mgshp_25.bmp)
 4向拉|![](test4_mlphp.bmp)
 8向拉|![](test4_mldhp.bmp)
+
+* 可以看出，对理想滤波器和高阶巴特沃斯，出现ringing环效应。受到补零的影响，滤波后边缘处效果很差。频域拉普拉斯与空域的结果很相近。
