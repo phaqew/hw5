@@ -1,3 +1,4 @@
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
 
 # 第五次作业
 
@@ -100,6 +101,8 @@ $$ =2(1-1+\frac{(2{\pi}\frac uN)^2}2)+2(1-1+\frac{(2{\pi}\frac vN)^2}2) $$
 
 $$ =\frac {4\pi^2}{N^2}(u^2+v^2+(u+v)^2+(u-v)^2) = =\frac {12\pi^2}{N^2}d^2 $$
 
+* 下面是高通滤波的结果，由于算出的值有正有负（零频分量/直流偏置被去除），这里给每个像素灰度值统一加上了128：（代码见[p2.cpp](p2.cpp)）
+
 高通滤波器|test3|![](test3_f.bmp)|![](test3.bmp)
 --|--|--|--
 D0|= 10||
@@ -127,15 +130,15 @@ D0|= 10||
 2阶巴特沃斯|![](_bwhp_10_2.bmp)|![](test4_f_bwhp_10_2.bmp)|![](test4_bwhp_10_2.bmp)
 3阶巴特沃斯|![](_bwhp_10_3.bmp)|![](test4_f_bwhp_10_3.bmp)|![](test4_bwhp_10_3.bmp)
 高斯|![](_gshp_10.bmp)|![](test4_f_gshp_10.bmp)|![](test4_gshp_10.bmp)
-4向拉普拉斯|![](_lphp_10.bmp)|![](test4_f_lphp_10.bmp)|![](test4_lphp_10.bmp)
-8向拉普拉斯|![](_ldhp_10.bmp)|![](test4_f_ldhp_10.bmp)|![](test4_ldhp_10.bmp)
 D0|= 25||
 理想|![](_idhp_25.bmp)|![](test4_f_idhp_25.bmp)|![](test4_idhp_25.bmp)
 1阶巴特沃斯|![](_bwhp_25_1.bmp)|![](test4_f_bwhp_25_1.bmp)|![](test4_bwhp_25_1.bmp)
 2阶巴特沃斯|![](_bwhp_25_2.bmp)|![](test4_f_bwhp_25_2.bmp)|![](test4_bwhp_25_2.bmp)
 3阶巴特沃斯|![](_bwhp_25_3.bmp)|![](test4_f_bwhp_25_3.bmp)|![](test4_bwhp_25_3.bmp)
 高斯|![](_gshp_25.bmp)|![](test4_f_gshp_25.bmp)|![](test4_gshp_25.bmp)
-4向拉普拉斯|![](_lphp_25.bmp)|![](test4_f_lphp_25.bmp)|![](test4_lphp_25.bmp)
-8向拉普拉斯|![](_ldhp_25.bmp)|![](test4_f_ldhp_25.bmp)|![](test4_ldhp_25.bmp)
+拉普拉斯|||
+4向|![](_lphp.bmp)|![](test4_f_lphp.bmp)|![](test4_lphp.bmp)
+8向|![](_ldhp.bmp)|![](test4_f_ldhp.bmp)|![](test4_ldhp.bmp)
 
-* 。
+* 高通滤波相当于提取了图像的边缘，unmask就是在原图上叠加高通滤波的结果，结果相当于对原图取锐化。空域上加上原图，在频域看就是滤波器频谱每点值加一，详见[main.cpp](main.cpp)中名字前带'm'的滤波器函数。结果如下：
+
