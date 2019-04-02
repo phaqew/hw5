@@ -80,13 +80,13 @@ test2|低通D0=20|![](test2_f.bmp)|![](test2.bmp)
 
 > 频域高通滤波器：设计高通滤波器包括butterworth,Gaussian,拉普拉斯和Unmask，测试图像test3,4
 
-* 高通butterworth和Gaussian就是1-低通：$ \frac {1}{1+(d_0/d)^{2n}} $ 和 $ 1-e^{-\frac {d^2}{2d_0^2}} $
+* 高通butterworth和Gaussian就是1-低通： ![](f3.gif) 和  ![](f4.gif)
 
 * 上次作业做过空域的拉普拉斯，对这个模板（0,-1,0|-1,4,-1|0,-1,0)进行二维DFT可得：
 
-$$ 4-e^{j2{\pi}\frac uN}-e^{j2{\pi}\frac vN}-e^{-j2{\pi}\frac uN}-e^{-j2{\pi}\frac uN} $$
+![](f5.gif)
 
-$$ =2(1-\cos(2{\pi}\frac uN))+2(1-\cos(2{\pi}\frac vN)) $$
+![](f6.gif)
 
 将cos函数展开成幂级数，保留二阶项（鉴于$ 2\pi\frac uN $取值在$ [-\pi,\pi] $之间，高频能量比较小，这样的近似还算合理），得：
 
