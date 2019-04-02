@@ -1,8 +1,9 @@
-<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
 
 # 第五次作业
 
 ### 自动化少61 何奈特 2140506114
+
+注：由于github上无法正常显示markdown公式，只好转成图片
 
 ---
 
@@ -39,30 +40,32 @@
 
 * [main.cpp](main.cpp)中规定了所有的滤波器，在main函数中读入文件，逐个调用filter函数进行处理。第一题取D0=20、50（巴特沃斯分别取1、2、3阶），结果如下：
 
-低通滤波器|test1|![](test1_f.bmp)|![](test1.bmp)
+test1|低通D0=50|![](test1_f.bmp)|![](test1.bmp)
 --|--|--|--
-D0|= 50||
 理想|![](_idlp_50.bmp)|![](test1_f_idlp_50.bmp)|![](test1_idlp_50.bmp)
 1阶巴特沃斯|![](_bwlp_50_1.bmp)|![](test1_f_bwlp_50_1.bmp)|![](test1_bwlp_50_1.bmp)
 2阶巴特沃斯|![](_bwlp_50_2.bmp)|![](test1_f_bwlp_50_2.bmp)|![](test1_bwlp_50_2.bmp)
 3阶巴特沃斯|![](_bwlp_50_3.bmp)|![](test1_f_bwlp_50_3.bmp)|![](test1_bwlp_50_3.bmp)
 高斯|![](_gslp_50.bmp)|![](test1_f_gslp_50.bmp)|![](test1_gslp_50.bmp)
-D0|= 20||
+
+test1|低通D0=20|![](test1_f.bmp)|![](test1.bmp)
+--|--|--|--
 理想|![](_idlp_20.bmp)|![](test1_f_idlp_20.bmp)|![](test1_idlp_20.bmp)
 1阶巴特沃斯|![](_bwlp_20_1.bmp)|![](test1_f_bwlp_20_1.bmp)|![](test1_bwlp_20_1.bmp)
 2阶巴特沃斯|![](_bwlp_20_2.bmp)|![](test1_f_bwlp_20_2.bmp)|![](test1_bwlp_20_2.bmp)
 3阶巴特沃斯|![](_bwlp_20_3.bmp)|![](test1_f_bwlp_20_3.bmp)|![](test1_bwlp_20_3.bmp)
 高斯|![](_gslp_20.bmp)|![](test1_f_gslp_20.bmp)|![](test1_gslp_20.bmp)
 
-低通滤波器|test2|![](test2_f.bmp)|![](test2.bmp)
+test2|低通D0=50|![](test2_f.bmp)|![](test2.bmp)
 --|--|--|--
-D0|= 50||
 理想|![](_idlp_50.bmp)|![](test2_f_idlp_50.bmp)|![](test2_idlp_50.bmp)
 1阶巴特沃斯|![](_bwlp_50_1.bmp)|![](test2_f_bwlp_50_1.bmp)|![](test2_bwlp_50_1.bmp)
 2阶巴特沃斯|![](_bwlp_50_2.bmp)|![](test2_f_bwlp_50_2.bmp)|![](test2_bwlp_50_2.bmp)
 3阶巴特沃斯|![](_bwlp_50_3.bmp)|![](test2_f_bwlp_50_3.bmp)|![](test2_bwlp_50_3.bmp)
 高斯|![](_gslp_50.bmp)|![](test2_f_gslp_50.bmp)|![](test2_gslp_50.bmp)
-D0|= 20||
+
+test2|低通D0=20|![](test2_f.bmp)|![](test2.bmp)
+--|--|--|--
 理想|![](_idlp_20.bmp)|![](test2_f_idlp_20.bmp)|![](test2_idlp_20.bmp)
 1阶巴特沃斯|![](_bwlp_20_1.bmp)|![](test2_f_bwlp_20_1.bmp)|![](test2_bwlp_20_1.bmp)
 2阶巴特沃斯|![](_bwlp_20_2.bmp)|![](test2_f_bwlp_20_2.bmp)|![](test2_bwlp_20_2.bmp)
@@ -103,42 +106,76 @@ $$ =\frac {4\pi^2}{N^2}(u^2+v^2+(u+v)^2+(u-v)^2) = =\frac {12\pi^2}{N^2}d^2 $$
 
 * 下面是高通滤波的结果，由于算出的值有正有负（零频分量/直流偏置被去除），这里给每个像素灰度值统一加上了128：（代码见[p2.cpp](p2.cpp)）
 
-高通滤波器|test3|![](test3_f.bmp)|![](test3.bmp)
+test3|高通D0=10|![](test3_f.bmp)|![](test3.bmp)
 --|--|--|--
-D0|= 10||
 理想|![](_idhp_10.bmp)|![](test3_f_idhp_10.bmp)|![](test3_idhp_10.bmp)
 1阶巴特沃斯|![](_bwhp_10_1.bmp)|![](test3_f_bwhp_10_1.bmp)|![](test3_bwhp_10_1.bmp)
 2阶巴特沃斯|![](_bwhp_10_2.bmp)|![](test3_f_bwhp_10_2.bmp)|![](test3_bwhp_10_2.bmp)
 3阶巴特沃斯|![](_bwhp_10_3.bmp)|![](test3_f_bwhp_10_3.bmp)|![](test3_bwhp_10_3.bmp)
 高斯|![](_gshp_10.bmp)|![](test3_f_gshp_10.bmp)|![](test3_gshp_10.bmp)
-4向拉普拉斯|![](_lphp_10.bmp)|![](test3_f_lphp_10.bmp)|![](test3_lphp_10.bmp)
-8向拉普拉斯|![](_ldhp_10.bmp)|![](test3_f_ldhp_10.bmp)|![](test3_ldhp_10.bmp)
-D0|= 25||
+
+test3|高通D0=25|![](test3_f.bmp)|![](test3.bmp)
+--|--|--|--
 理想|![](_idhp_25.bmp)|![](test3_f_idhp_25.bmp)|![](test3_idhp_25.bmp)
 1阶巴特沃斯|![](_bwhp_25_1.bmp)|![](test3_f_bwhp_25_1.bmp)|![](test3_bwhp_25_1.bmp)
 2阶巴特沃斯|![](_bwhp_25_2.bmp)|![](test3_f_bwhp_25_2.bmp)|![](test3_bwhp_25_2.bmp)
 3阶巴特沃斯|![](_bwhp_25_3.bmp)|![](test3_f_bwhp_25_3.bmp)|![](test3_bwhp_25_3.bmp)
 高斯|![](_gshp_25.bmp)|![](test3_f_gshp_25.bmp)|![](test3_gshp_25.bmp)
-4向拉普拉斯|![](_lphp_25.bmp)|![](test3_f_lphp_25.bmp)|![](test3_lphp_25.bmp)
-8向拉普拉斯|![](_ldhp_25.bmp)|![](test3_f_ldhp_25.bmp)|![](test3_ldhp_25.bmp)
 
-高通滤波器|test4|![](test4_f.bmp)|![](test4.bmp)
+test3|拉普拉斯|![](test3_f.bmp)|![](test3.bmp)
 --|--|--|--
-D0|= 10||
+4向|![](_lphp.bmp)|![](test3_f_lphp.bmp)|![](test3_lphp.bmp)
+8向|![](_ldhp.bmp)|![](test3_f_ldhp.bmp)|![](test3_ldhp.bmp)
+
+test4|高通D0=10|![](test4_f.bmp)|![](test4.bmp)
+--|--|--|--
 理想|![](_idhp_10.bmp)|![](test4_f_idhp_10.bmp)|![](test4_idhp_10.bmp)
 1阶巴特沃斯|![](_bwhp_10_1.bmp)|![](test4_f_bwhp_10_1.bmp)|![](test4_bwhp_10_1.bmp)
 2阶巴特沃斯|![](_bwhp_10_2.bmp)|![](test4_f_bwhp_10_2.bmp)|![](test4_bwhp_10_2.bmp)
 3阶巴特沃斯|![](_bwhp_10_3.bmp)|![](test4_f_bwhp_10_3.bmp)|![](test4_bwhp_10_3.bmp)
 高斯|![](_gshp_10.bmp)|![](test4_f_gshp_10.bmp)|![](test4_gshp_10.bmp)
-D0|= 25||
+
+test4|高通D0=25|![](test4_f.bmp)|![](test4.bmp)
+--|--|--|--
 理想|![](_idhp_25.bmp)|![](test4_f_idhp_25.bmp)|![](test4_idhp_25.bmp)
 1阶巴特沃斯|![](_bwhp_25_1.bmp)|![](test4_f_bwhp_25_1.bmp)|![](test4_bwhp_25_1.bmp)
 2阶巴特沃斯|![](_bwhp_25_2.bmp)|![](test4_f_bwhp_25_2.bmp)|![](test4_bwhp_25_2.bmp)
 3阶巴特沃斯|![](_bwhp_25_3.bmp)|![](test4_f_bwhp_25_3.bmp)|![](test4_bwhp_25_3.bmp)
 高斯|![](_gshp_25.bmp)|![](test4_f_gshp_25.bmp)|![](test4_gshp_25.bmp)
-拉普拉斯|||
+
+test4|拉普拉斯|![](test4_f.bmp)|![](test4.bmp)
+--|--|--|--
 4向|![](_lphp.bmp)|![](test4_f_lphp.bmp)|![](test4_lphp.bmp)
 8向|![](_ldhp.bmp)|![](test4_f_ldhp.bmp)|![](test4_ldhp.bmp)
 
 * 高通滤波相当于提取了图像的边缘，unmask就是在原图上叠加高通滤波的结果，结果相当于对原图取锐化。空域上加上原图，在频域看就是滤波器频谱每点值加一，详见[main.cpp](main.cpp)中名字前带'm'的滤波器函数。结果如下：
 
+test3|![](test3.bmp)
+--|--
+理想D0=10|![](test3_midhp_10.bmp)
+1阶巴D0=10|![](test3_mbwhp_10_1.bmp)
+2阶巴D0=10|![](test3_mbwhp_10_2.bmp)
+3阶巴D0=10|![](test3_mbwhp_10_3.bmp)
+高斯D0=10|![](test3_mgshp_10.bmp)
+理想D0=25|![](test3_midhp_25.bmp)
+1阶巴D0=25|![](test3_mbwhp_25_1.bmp)
+2阶巴D0=25|![](test3_mbwhp_25_2.bmp)
+3阶巴D0=25|[](test3_mbwhp_25_3.bmp)
+高斯D0=25|![](test3_mgshp_25.bmp)
+4向拉|![](test3_mlphp.bmp)
+8向拉|![](test3_mldhp.bmp)
+
+test4|![](test4.bmp)
+--|--
+理想D0=10|![](test4_midhp_10.bmp)
+1阶巴D0=10|![](test4_mbwhp_10_1.bmp)
+2阶巴D0=10|![](test4_mbwhp_10_2.bmp)
+3阶巴D0=10|![](test4_mbwhp_10_3.bmp)
+高斯D0=10|![](test4_mgshp_10.bmp)
+理想D0=25|![](test4_midhp_25.bmp)
+1阶巴D0=25|![](test4_mbwhp_25_1.bmp)
+2阶巴D0=25|![](test4_mbwhp_25_2.bmp)
+3阶巴D0=25|[](test4_mbwhp_25_3.bmp)
+高斯D0=25|![](test4_mgshp_25.bmp)
+4向拉|![](test4_mlphp.bmp)
+8向拉|![](test4_mldhp.bmp)
