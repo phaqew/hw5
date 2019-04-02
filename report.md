@@ -13,7 +13,7 @@
 
 * 读入一幅M*N的图像后，至少要补零至2M*2N，这是为了避免wraparound错误；另外为了方便实现FFT算法，需要补到2的整数次幂，综上输入图像应该补零至P*P，P=2^(ceil(lb(max(M, N))))。对此进行二维DFT得到复频谱，与滤波器的频谱逐点相乘，再进行逆DFT（就是对频谱再进行一次DFT，做中心对称，然后逐点除以P^2），依原图范围裁剪得到处理后图像。详见[filter.cpp](filter.cpp)
 
-* 这里使用最简单的方式计算二维DFT：先对每一行计算FFT，再对每一列计算FFT，复杂度n*n*log(n)，对于大图像的处理稍慢，这点不可避免。代码见[FFT.cpp](FFT.cpp)
+* 这里使用最简单的方式计算二维DFT：先对每一行计算FFT，再对每一列计算FFT，复杂度n*n*log(n)，对于大图像的处理稍慢，这点不可避免。代码见[fft.cpp](fft.cpp)
 
 * 功率谱定义为圆内频点模平方的求和，这部分内容写在[ps.cpp](ps.cpp)中，生成了几幅功率谱分布图（横轴是频率，纵轴是功率谱密度），以及功率谱比表[test1_ps.csv](test1_ps.csv)、[test2_ps.csv](test2_ps.csv)、[test3_ps.csv](test3_ps.csv)、[test4_ps.csv](test4_ps.csv)：
 
@@ -38,23 +38,37 @@
 
 * [main.cpp](main.cpp)中规定了所有的滤波器，在main函数中读入文件，逐个调用filter函数进行处理。第一题取D0=20、50（巴特沃斯分别取1、2、3阶），结果如下：
 
-低通滤波器||![](test1_f.bmp)|![](test1.bmp)
+低通滤波器|test1|![](test1_f.bmp)|![](test1.bmp)
 --|--|--|--
-|D0 = 50||
-理想|![](_idlp_50.bmp|![](test1_f_idlp_50.bmp)|![](test1_idlp_50.bmp)
-1阶巴特沃斯|![](_bwlp_50_1.bmp|![](test1_f_bwlp_50_1.bmp)|![](test1_bwlp_50_1.bmp)
-2阶巴特沃斯|![](_bwlp_50_2.bmp|![](test1_f_bwlp_50_2.bmp)|![](test1_bwlp_50_2.bmp)
-3阶巴特沃斯|![](_bwlp_50_3.bmp|![](test1_f_bwlp_50_3.bmp)|![](test1_bwlp_50_3.bmp)
-高斯|![](_gslp_50.bmp|![](test1_f_gslp_50.bmp)|![](test1_gslp_50.bmp)
-|D0 = 20||
-理想|![](_idlp_20.bmp|![](test1_f_idlp_20.bmp)|![](test1_idlp_20.bmp)
-1阶巴特沃斯|![](_bwlp_20_1.bmp|![](test1_f_bwlp_20_1.bmp)|![](test1_bwlp_20_1.bmp)
-2阶巴特沃斯|![](_bwlp_20_2.bmp|![](test1_f_bwlp_20_2.bmp)|![](test1_bwlp_20_2.bmp)
-3阶巴特沃斯|![](_bwlp_20_3.bmp|![](test1_f_bwlp_20_3.bmp)|![](test1_bwlp_20_3.bmp)
-高斯|![](_gslp_20.bmp|![](test1_f_gslp_20.bmp)|![](test1_gslp_20.bmp)
+D0|= 50||
+理想|![](_idlp_50.bmp)|![](test1_f_idlp_50.bmp)|![](test1_idlp_50.bmp)
+1阶巴特沃斯|![](_bwlp_50_1.bmp)|![](test1_f_bwlp_50_1.bmp)|![](test1_bwlp_50_1.bmp)
+2阶巴特沃斯|![](_bwlp_50_2.bmp)|![](test1_f_bwlp_50_2.bmp)|![](test1_bwlp_50_2.bmp)
+3阶巴特沃斯|![](_bwlp_50_3.bmp)|![](test1_f_bwlp_50_3.bmp)|![](test1_bwlp_50_3.bmp)
+高斯|![](_gslp_50.bmp)|![](test1_f_gslp_50.bmp)|![](test1_gslp_50.bmp)
+D0|= 20||
+理想|![](_idlp_20.bmp)|![](test1_f_idlp_20.bmp)|![](test1_idlp_20.bmp)
+1阶巴特沃斯|![](_bwlp_20_1.bmp)|![](test1_f_bwlp_20_1.bmp)|![](test1_bwlp_20_1.bmp)
+2阶巴特沃斯|![](_bwlp_20_2.bmp)|![](test1_f_bwlp_20_2.bmp)|![](test1_bwlp_20_2.bmp)
+3阶巴特沃斯|![](_bwlp_20_3.bmp)|![](test1_f_bwlp_20_3.bmp)|![](test1_bwlp_20_3.bmp)
+高斯|![](_gslp_20.bmp)|![](test1_f_gslp_20.bmp)|![](test1_gslp_20.bmp)
 
+低通滤波器|test2|![](test2_f.bmp)|![](test2.bmp)
+--|--|--|--
+D0|= 50||
+理想|![](_idlp_50.bmp)|![](test2_f_idlp_50.bmp)|![](test2_idlp_50.bmp)
+1阶巴特沃斯|![](_bwlp_50_1.bmp)|![](test2_f_bwlp_50_1.bmp)|![](test2_bwlp_50_1.bmp)
+2阶巴特沃斯|![](_bwlp_50_2.bmp)|![](test2_f_bwlp_50_2.bmp)|![](test2_bwlp_50_2.bmp)
+3阶巴特沃斯|![](_bwlp_50_3.bmp)|![](test2_f_bwlp_50_3.bmp)|![](test2_bwlp_50_3.bmp)
+高斯|![](_gslp_50.bmp)|![](test2_f_gslp_50.bmp)|![](test2_gslp_50.bmp)
+D0|= 20||
+理想|![](_idlp_20.bmp)|![](test2_f_idlp_20.bmp)|![](test2_idlp_20.bmp)
+1阶巴特沃斯|![](_bwlp_20_1.bmp)|![](test2_f_bwlp_20_1.bmp)|![](test2_bwlp_20_1.bmp)
+2阶巴特沃斯|![](_bwlp_20_2.bmp)|![](test2_f_bwlp_20_2.bmp)|![](test2_bwlp_20_2.bmp)
+3阶巴特沃斯|![](_bwlp_20_3.bmp)|![](test2_f_bwlp_20_3.bmp)|![](test2_bwlp_20_3.bmp)
+高斯|![](_gslp_20.bmp)|![](test2_f_gslp_20.bmp)|![](test2_gslp_20.bmp)
 
-* 。
+* 
 
 ---
 
