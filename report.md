@@ -39,13 +39,19 @@
 * [main.cpp](main.cpp)中规定了所有的滤波器，在main函数中读入文件，逐个调用filter函数进行处理。第一题取D0=20、50（巴特沃斯分别取1、2、3阶），结果如下：
 
 低通滤波器||![](test1_f.bmp)|![](test1.bmp)
-:--:|:--:|:--:
- |D0 = 50| 
+--|--|--|--
+|D0 = 50||
 理想|![](_idlp_50.bmp|![](test1_f_idlp_50.bmp)|![](test1_idlp_50.bmp)
 1阶巴特沃斯|![](_bwlp_50_1.bmp|![](test1_f_bwlp_50_1.bmp)|![](test1_bwlp_50_1.bmp)
 2阶巴特沃斯|![](_bwlp_50_2.bmp|![](test1_f_bwlp_50_2.bmp)|![](test1_bwlp_50_2.bmp)
 3阶巴特沃斯|![](_bwlp_50_3.bmp|![](test1_f_bwlp_50_3.bmp)|![](test1_bwlp_50_3.bmp)
 高斯|![](_gslp_50.bmp|![](test1_f_gslp_50.bmp)|![](test1_gslp_50.bmp)
+|D0 = 20||
+理想|![](_idlp_20.bmp|![](test1_f_idlp_20.bmp)|![](test1_idlp_20.bmp)
+1阶巴特沃斯|![](_bwlp_20_1.bmp|![](test1_f_bwlp_20_1.bmp)|![](test1_bwlp_20_1.bmp)
+2阶巴特沃斯|![](_bwlp_20_2.bmp|![](test1_f_bwlp_20_2.bmp)|![](test1_bwlp_20_2.bmp)
+3阶巴特沃斯|![](_bwlp_20_3.bmp|![](test1_f_bwlp_20_3.bmp)|![](test1_bwlp_20_3.bmp)
+高斯|![](_gslp_20.bmp|![](test1_f_gslp_20.bmp)|![](test1_gslp_20.bmp)
 
 
 * 。
